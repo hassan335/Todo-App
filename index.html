@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./app.js"></script>
+  <title>Document</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<body>
+
+  <div id="main">
+
+
+
+
+  </div>
+  <input type="text" id="txtinput">
+  <button onclick="Getinp()">Add</button>
+
+  <script>
+    var a = document.getElementById('main')
+    var tN, text;
+    function Getinp() {
+      var newElement = document.createElement('P');
+      text = document.getElementById('txtinput').value;
+      tN = document.createTextNode(text)
+      newElement.appendChild(tN)
+      a.appendChild(newElement)
+      clear();
+      var newElement2 = document.createElement('BUTTON');
+      newElement2.innerHTML = "Edit"
+      newElement.appendChild(newElement2)
+      newElement2.setAttribute('onclick', 'editlist(this)')
+
+      var newElement3 = document.createElement('BUTTON');
+      newElement3.innerHTML="Delete"
+      
+      newElement.appendChild(newElement3)
+      newElement3.setAttribute('onclick', 'deletelist(this)')
+      var newElement4 = document.createElement('BUTTON');
+      newElement4.innerHTML = "Delete All"
+      newElement.appendChild(newElement4)
+      newElement4.setAttribute('onclick', 'deletealllist()')
+    }
+
+    function deletelist(e) {
+      alert('Are you sure you want to delete')
+      e.parentNode.remove();
+}
+
+    function editlist(e) {
+      var b = e.parentNode.firstChild
+
+      clear();
+      var text = document.getElementById('txtinput')
+      text.value = b.nodeValue
+      e.parentNode.remove();
+      e.remove();
+}
+
+    function deletealllist() {
+      alert('Are you sure you want to delete all items')
+      a.innerHTML = "";
+      clear();
+ }
+
+    function clear() {
+      document.getElementById('txtinput').value = '';
+    }
+  </script>
+
+
+</body>
+
+</html>
